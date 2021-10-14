@@ -116,8 +116,8 @@ export function Footer() {
             <Link href="/marketplace" fontSize="12px" pt="10px">
               Marketplace
             </Link>
-            <Link href="/drops" fontSize="12px" pt="10px">
-              Drops
+            <Link href="/about" fontSize="12px" pt="10px">
+              Contact Us
             </Link>
             <Link href="http://docs.bazaarnft.xyz/" fontSize="12px" pt="10px" pb="2vh">
               Docs

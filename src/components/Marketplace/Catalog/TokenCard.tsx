@@ -237,22 +237,20 @@ export default function TokenCard(props: TokenCardProps) {
       ratio={1}
       w="100%"
       bg="white"
-      border="1px solid"
-      borderColor="lightGray"
       borderRadius="30px"
       overflow="hidden"
-      boxShadow="0px 0px 0px 4px rgba(15, 97, 255, 0)"
+      boxShadow="0px 0px 8px rgba(0, 0, 0, 0.1)"
       transition="all linear 50ms"
       _hover={{
         cursor: 'pointer',
-        boxShadow: '0px 0px 0px 4px rgba(15, 97, 255, 0.1)'
+        boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.3)'
       }}
       onClick={() =>
         setLocation(`/collection/${props.address}/token/${props.id}`)
       }
     >
       <AspectRatio ratio={4 / 3}>
-        <Box bgColor="brand.brightGray">
+        <Box bg="linear-gradient(to right bottom, #4ba0d4, #3e95cc, #3089c3, #207ebb, #0973b2)">
           {obj && (/^video\/.*/.test(obj.type)) ? (
             <Flex position="absolute" ml="82%" mt="52%">
               <Volume2 size="25px" color="white"/>
@@ -268,9 +266,6 @@ export default function TokenCard(props: TokenCardProps) {
         width="100%"
         px={4}
         py={4}
-        bg="white"
-        borderTop="1px solid"
-        borderColor="brand.lightBlue"
         flexDir="column"
       >
         <Heading size="sm">{props.title}</Heading>
@@ -278,20 +273,20 @@ export default function TokenCard(props: TokenCardProps) {
           <>
           {verifiedUserAlias !== "" ? (
             <>
-            <Text fontSize="sm" >Seller: {verifiedUserAlias} </Text>
+            <Text fontSize="sm" >By {verifiedUserAlias} </Text>
             </>
           ) : (
             <>
-            <Text fontSize="sm" >Seller: {props.sale?.seller.substr(0, 5)}...{props.sale?.seller.substr(-5)}</Text>
+            <Text fontSize="sm" >By {props.metadata.minter?.substr(0, 5)}...{props.metadata.minter?.substr(-5)}</Text>
             </>
           )}
           </>
         ) : (
           <>
-          <Text fontSize="sm" >Seller: {props.sale?.seller.substr(0, 5)}...{props.sale?.seller.substr(-5)}</Text>
+          <Text fontSize="sm" >By {props.metadata.minter?.substr(0, 5)}...{props.metadata.minter?.substr(-5)}</Text>
           {verifiedUserAlias !== "" ? (
             <>
-            <Text fontSize="sm" >Minter: {verifiedUserAlias} </Text>
+            <Text fontSize="sm" >By {verifiedUserAlias} </Text>
             </>
           ) : (
             <></>

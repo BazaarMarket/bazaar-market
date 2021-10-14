@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { 
   Box, 
   Container, 
@@ -11,7 +12,9 @@ import {
   TagLabel,
   TagLeftIcon,
   Link,
-  Spinner
+  Spinner,
+  Button,
+  VisuallyHidden
 } from '@chakra-ui/react';
 import { Wind, Settings, UserCheck, ExternalLink } from 'react-feather';
 import { useSelector, useDispatch } from '../../reducer';
@@ -20,6 +23,7 @@ import TokenCard from './TokenCard';
 import { VisibilityTrigger } from '../common/VisibilityTrigger';
 import { MarketplaceNftLoadingData } from '../../lib/nfts/queries';
 import { DonateTezButton } from '../common/modals/DonateModal';
+import { GetUserMetadata } from '../../lib/service/api';
 
 var verifiedUsers: string[] = [ 
   "jSZtK", "2YnvZ", "PENui", "Puqry", 
@@ -133,6 +137,33 @@ export default function ProfilePage({
       }
     }
     
+  }
+
+  async function GetProfileData(){
+    await GetUserMetadata(address).then((data) => {
+      const {
+        alias,
+        description,
+        site,
+        telegram,
+        twitter,
+        github,
+        reddit,
+        instagram,
+        logo,
+        tzprofile,
+      } = data.data
+      if (data.data.alias) data.data.alias.setState({ alias })
+      if (data.data.description) data.data.description.setState({ description })
+      if (data.data.site) data.data.site.setState({ site })
+      if (data.data.telegram) data.data.telegram.setState({ telegram })
+      if (data.data.twitter) data.data.twitter.setState({ twitter })
+      if (data.data.github) data.data.github.setState({ github })
+      if (data.data.reddit) data.data.reddit.setState({ reddit })
+      if (data.data.instagram) data.data.instagram.setState({ instagram })
+      if (data.data.logo) data.data.logo.setState({ logo })
+      if (data.data.tzprofile) data.data.tzprofile.setState({ tzprofile })
+    })
   }
 
   return (

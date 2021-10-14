@@ -180,7 +180,7 @@ export default function Catalog() {
     <Flex
       w="100%"
       minH="90vh"
-      bg="brand.brightGray"
+      bg="white"
       px={5}
       pt={6}
       overflowY="scroll"
